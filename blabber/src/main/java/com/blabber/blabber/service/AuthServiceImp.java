@@ -34,4 +34,16 @@ public class AuthServiceImp implements AuthService{
             return null;
         }
     }
+
+    @Override
+    public String registerUser(User user){
+        String query = "FROM User WHERE email = :email";
+
+        List<User> userList = entityManager.createQuery(query)
+                .setParameter("email", user.getEmail())
+                .getResultList();
+        if(!userList.isEmpty()) return "Email taken";
+        entityManager.merge(user);
+        return "User Registered";
+    }
 }

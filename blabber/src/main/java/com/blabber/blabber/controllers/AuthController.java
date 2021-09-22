@@ -3,6 +3,8 @@ package com.blabber.blabber.controllers;
 import com.blabber.blabber.models.User;
 import com.blabber.blabber.service.AuthService;
 import com.blabber.blabber.utils.JWTUtil;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +28,12 @@ public class AuthController {
         } else {
             return "Wrong Credentials";
         }
+    }
+    @RequestMapping(value="auth/register", method=RequestMethod.POST)
+    public String registerUser(@RequestBody User user){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hashedPassword = argon2.hash(1,1024, 1, user.getPassword());
+        user.setPassword(hashedPassword);
+        return authService.registerUser(user);
     }
 }
