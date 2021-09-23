@@ -13,7 +13,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter @Column(name="id")
     private int id;
-    @Getter @Setter @Column(name="username")
+    @Getter @Setter @Column(name="userId")
     private int userId;
     @Getter @Setter @Column(name="content")
     private String content;

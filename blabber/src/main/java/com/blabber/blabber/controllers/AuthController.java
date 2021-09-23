@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     @Autowired
     private AuthService authService;
-
     @Autowired
     private JWTUtil jwtUtil;
 
