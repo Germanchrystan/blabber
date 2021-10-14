@@ -1,19 +1,27 @@
 package com.blabber.blabber.models;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@Data
+@Builder
 @Entity
 @Table(name= "postLike")
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter @Column(name="id")
+    @Column(name="id")
     private int id;
-    @Getter @Setter @Column(name="userId")
-    private int userId;
-    @Getter @Setter @Column(name="postId")
-    private int postId;
+
+    @ManyToOne
+    @JoinColumn(name="userId", referencedColumnName = "userId")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name="postId", referencedColumnName = "postId")
+    private Post post;
 }

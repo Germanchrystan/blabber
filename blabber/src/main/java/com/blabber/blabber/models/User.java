@@ -1,23 +1,27 @@
 package com.blabber.blabber.models;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@Data
+@Builder
 @Entity
 @Table(name= "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter @Column(name="id")
+    @Column(name="id")
     private int id;
-    @Getter @Setter @Column(name="username")
+    @Column(name="username")
     private String username;
-    @Getter @Setter @Column(name="atUser")
+    @Column(name="atUser")
     private String atUser;
-    @Getter @Setter @Column(name="email")
+    @Column(name="email")
     private String email;
-    @Getter @Setter @Column(name="password")
+    @Column(name="password")
     private String password;
 }

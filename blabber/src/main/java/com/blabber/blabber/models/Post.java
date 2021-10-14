@@ -1,26 +1,39 @@
 package com.blabber.blabber.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotBlank;
+import java.time.Instant;
 
+@Data
+@Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name= "post")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter @Column(name="id")
-    private int id;
-    @Getter @Setter @Column(name="userId")
-    private int userId;
-    @Getter @Setter @Column(name="content")
+    @Column(name="id")
+    private Long postId;
+    @Column(name="content")
+    @NotBlank
     private String content;
-    @Getter @Setter @Column(name="date")
-    private Date publishDate;
-    @Getter @Setter @Column(name="likes")
-    private int likes;
-    @Getter @Setter @Column(name="edited")
+    @Column(name="date")
+    private Instant createdDate;
+    @Column(name="edited")
     private boolean edited;
+    @Column(name="likeCount")
+    private int likeCount;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
+    private User user;
+    /*
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "likeId", referencedColumnName = "likeId")
+    private Like like;
+    */
 }
