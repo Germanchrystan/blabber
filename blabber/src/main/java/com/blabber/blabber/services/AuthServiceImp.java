@@ -1,4 +1,4 @@
-package com.blabber.blabber.service;
+package com.blabber.blabber.services;
 
 import com.blabber.blabber.models.User;
 import de.mkammerer.argon2.Argon2;

@@ -2,7 +2,7 @@ package com.blabber.blabber.controllers;
 
 import com.blabber.blabber.dto.PostsDto;
 import com.blabber.blabber.models.Post;
-import com.blabber.blabber.service.PostService;
+import com.blabber.blabber.services.PostService;
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.ResponseEntity;

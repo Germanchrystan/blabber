@@ -1,7 +1,7 @@
 package com.blabber.blabber.controllers;
 
 import com.blabber.blabber.models.User;
-import com.blabber.blabber.service.AuthService;
+import com.blabber.blabber.services.AuthService;
 import com.blabber.blabber.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
